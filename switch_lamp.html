@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <h3>Tương tác giữa hai đối tượng: công tắc và bóng đèn</h3>
+</head>
+<body>
+  <script src="lamp.js"></script>
+  <script src="switch.js"></script>
+
+<fieldset style="width: 450px;">
+  <legend style="text-align: center;">Tương tác giữa hai đối tượng: công tắc và bóng đèn</legend>
+  <p>Công tắc bật tắt bóng đèn
+    <select id="status_switch" style="width: 100px;">
+      <option></option>
+      <option value = 1>ON</option>
+      <option value = 0>OFF</option>
+    </select>
+  </p>
+  
+  <button onclick="display();">Hiển thị trạng thái bóng đèn</button><br>
+  <br><span id="result"></span>
+</fieldset>
+</body>
+
+</html>
+<script>
+  var status1;
+  function getValue() {
+    status1 = parseInt(document.getElementById("status_switch").value);
+
+  }
+
+  function display() {
+    getValue();
+    let myLamp = new ElectricLamp(status1);
+    
+    let mySwitch = new SwitchButton(status1, myLamp);   
+    document.getElementById("result").innerHTML = mySwitch.getLampLight();
+    
+  }
+  
+</script>
+
